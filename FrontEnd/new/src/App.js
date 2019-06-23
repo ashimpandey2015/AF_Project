@@ -17,6 +17,7 @@ import assManager from './components/instructor/assManager';
 import update from './components/instructor/updateMarks';
 import view from './components/instructor/viewMarks';
 import course from './components/student/courses';
+import StudentHome from './components/student/studentHome';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path='/update' exact component={update} />
         <Route path='/view' exact component={view} />
         <Route path='/courses' exact component={course} />
+        <Route path='/StudentHome' exact component={StudentHome}/>
       </Switch>
     </Router>
     </div>
