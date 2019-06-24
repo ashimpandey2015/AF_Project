@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cors = require('cors');
 const Assignments = require('../models/assignments');
+const Subject = require('../models/courses');
 
 router.post('/assignments/add', function (req, res) {
     var user = new Assignments(req.body);
@@ -62,31 +63,58 @@ router.post('/login', function (req, res) {     //Login validation for duplicate
 });
 
 
-router.get('/users/:email', function(req, res) { //get all users in the database
-    let email = req.params.email;
-    Assignments.findById(email).then(function (user) {
-        if (user) {                                                                                      //GET
-            User.findOne({'password': password}, function (err, user) {
+router.get('/users/:NIC', function(req, res) { //get a particular user from database
+    Assignments.findOne({NIC:req.params.NIC},req.body).then(function (user) {
                 res.send(user);
 
             })
-        }
-    })
+
 })
 
 
-router.route('/update/:id').put((req, res) => {
-    Courses.findByIdAndUpdate({_id: req.params.id}, req.body).then(function () {
-        Courses.findOne({_id: req.params.id}).then(function (course) {                                  //UPDATE
-            res.send(course);
-        });
-    })
+
+//Adding of COurses or Subjects and Lecturer
+router.post('/courses/add', function (req, res, next) {
+
+    Subject.create(req.body).then(function (exam) {
+            res.send(exam);
+        }).catch(next)
+    });
+
+
+//Retriving all the COurses or the Subjects
+router.get('/courses/get', function(req, res){    //get all users in the database
+    Subject.find({}).then(function(user) {
+        res.send(user);
+    });
 });
 
 
 
+
+router.route('/update/:NIC').put((req, res) => {
+    Assignments.findByIdAndUpdate({NIC: req.params.NIC}, req.body).then(function () {
+        Assignments.findOne({_id: req.params.id}).then(function (Assignments) {                                  //UPDATE
+            res.send(Assignments);
+        });
+    })
+});
+
+router.get('/users', function(req, res){    //get all users in the database
+    Assignments.find({}).then(function(user) {
+        res.send(user);
+    });
+});
+
+router.get('/Student', function(req, res){    //get all users in the database
+    Assignments.find({"userType":"student"}).then(function(user) {
+        res.send(user);
+    });
+});
+
+//Deleting the Subject
 router.route('/delete/:id').delete((req, res) => {
-    Courses.findByIdAndRemove({_id: req.params.id}).then(function(course){
+    Subject.findByIdAndRemove({_id: req.params.id}).then(function(course){
         res.send(course);
 
     })
