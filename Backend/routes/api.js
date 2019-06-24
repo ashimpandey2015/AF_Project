@@ -106,7 +106,7 @@ router.get('/users', function(req, res){    //get all users in the database
     });
 });
 
-router.get('/Student', function(req, res){    //get all users in the database
+router.get('/Student', function(req, res){    //get all Student Details
     Assignments.find({"userType":"student"}).then(function(user) {
         res.send(user);
     });
