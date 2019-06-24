@@ -9,12 +9,14 @@ import AppBar from 'material-ui/AppBar';
 const Students = props => (
     <tr>
         <td>{props.assign.name}</td>
-        <td>{props.assign.email}</td>
-        <td>{props.assign.userType}</td>
+        <td>{props.assign.lecturer}</td>
+        <td>
+            <Link to={"/delete/"+props.assign._id}>Delete</Link>
+        </td>
     </tr>
 )
 
-export default class viewStudent extends Component {
+export default class coursesEnrolled extends Component {
 
     constructor(props){
         super(props);
@@ -22,7 +24,7 @@ export default class viewStudent extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/api/Student')
+        axios.get('http://localhost:4000/api/courses/get')
             .then(response => {
                 this.setState({Courses: response.data});
             }).catch(function (error) {
@@ -41,16 +43,15 @@ export default class viewStudent extends Component {
         return(
             <MuiThemeProvider>  
                 <React.Fragment>
-                <AppBar title ="Student Details"/>
+                <AppBar title ="Course Details"/>
                 <br/>
 
             <div>
                 <table className="table table-striped" style={{marginTop: 20}}>
                    <thead>
                     <tr>
-                        <th>Names</th>
-                        <th>Email</th>
-                        <th>User Type</th>
+                        <th>Course Enrolled</th>
+                        <th>Lecturer</th>
                     </tr>
                    </thead>
                     <tbody>

@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import AppBar from 'material-ui/AppBar';
 
 
 export default class Login extends Component{
@@ -51,10 +55,40 @@ export default class Login extends Component{
 
     render() {
         return (
+
+        <MuiThemeProvider>  
+            <React.Fragment>
+            <AppBar title ="Login"/>
+                <br/>
+
             <div style={{marginTop: 20}}>
-                <h3>Login</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+
+                <TextField
+                hintText = "Email"
+                type="text"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+                />
+                <br/>
+                <br/>
+
+                <TextField
+                hintText = "Password"
+                type="text"
+                value={this.state.password}
+                onChange={this.onChangePassword}
+                />
+                <br/>
+                <br/>
+
+                <RaisedButton 
+                     label="Create Account"
+                     primary={true}
+                     type="submit"
+                     />
+
+                    {/* <div className="form-group">
                         <label>Email: </label>
                         <input type="text"
                                className='form-control'
@@ -72,12 +106,15 @@ export default class Login extends Component{
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Create Account" className="btn btn-primary"/>
-                    </div>
+                    </div> */}
 
-
+                    
 
                 </form>
             </div>
+
+            </React.Fragment>
+        </MuiThemeProvider>
         )
     }
 }

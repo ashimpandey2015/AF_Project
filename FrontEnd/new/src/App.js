@@ -16,8 +16,12 @@ import instructorHome from './components/instructor/instructorHome';
 import assManager from './components/instructor/assManager';
 import update from './components/instructor/updateMarks';
 import view from './components/instructor/viewMarks';
-import course from './components/student/courses';
+import courses from './components/student/courses';
 import StudentHome from './components/student/studentHome';
+import LoginDetails from './components/LoginDetails';
+import ViewStudent from './components/student/viewStudent';
+import CoursesEnrolled from './components/student/coursesEnrolled';
+import deleteCourse from './components/student/deleteCourses';
 
 function App() {
   return (
@@ -39,8 +43,13 @@ function App() {
         <Route path='/assManager' exact component={assManager} />
         <Route path='/update' exact component={update} />
         <Route path='/view' exact component={view} />
-        <Route path='/courses' exact component={course} />
+        <Route path='/courses' exact component={courses} />
         <Route path='/StudentHome' exact component={StudentHome}/>
+        <Route path='/LoginDetails' exact component={LoginDetails}/>
+        <Route path='/ViewStudent' exact component={ViewStudent}/>
+        <Route path='/CoursesEnrolled' exact component={CoursesEnrolled}/>
+        <Route path='/delete/:id' exact component={deleteCourse}/>
+
       </Switch>
     </Router>
     </div>

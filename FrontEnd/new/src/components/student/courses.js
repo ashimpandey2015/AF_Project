@@ -18,8 +18,9 @@ export class updateMarks extends Component{
         <MuiThemeProvider>  
             <React.Fragment>
             <AppBar title ="Courses"/>
-             
-             <h3>Select Your Course to upload the assignment</h3>
+             <br/>
+             <h4>Select Your Course to upload the assignment</h4>
+             <br/>
             <RaisedButton 
             label="AF"
             primary={true}

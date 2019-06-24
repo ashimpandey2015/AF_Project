@@ -25,7 +25,7 @@ export class assManager extends Component{
         <MuiThemeProvider>  
             <React.Fragment>
             <AppBar title ="Assignment Management Pages"/>
-             
+             <br/>
              
             <TextField
              hintText = "Student ID"
@@ -33,12 +33,6 @@ export class assManager extends Component{
              type="text"
              />
              <br/>
-
-             <TextField
-             hintText = "Course Id"
-             name = "password"
-             type="text"
-             />
              <br/>
 
 

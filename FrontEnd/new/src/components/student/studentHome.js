@@ -3,19 +3,26 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from  'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import studentDetails from '../student/viewStudent';
-import viewCourses from '../student/courses';
+import viewStudent from '../student/viewStudent';
+import courses from '../student/courses';
+import stu from '../img/stu321.jpg';
+import CoursesEnrolled from '../student/coursesEnrolled';
 
 export class studentHome extends Component{
    
     StudentDetails = e => {
     e.preventDefault();
-    this.props.history.push(`/studentDetails`);
+    this.props.history.push(`/viewStudent`);
     }
 
     viewCourses = e => {
+    e.preventDefault();
+    this.props.history.push(`/courses`);
+    }
+
+    enrollCourse = e => {
         e.preventDefault();
-        this.props.history.push(`/viewCourses`);
+        this.props.history.push(`/CoursesEnrolled`);
         }
 
     render(){
@@ -43,6 +50,23 @@ export class studentHome extends Component{
             styles = {styles.button}
             onClick={this.viewCourses}
             />
+             <br/>
+             <br/>
+             <br/>
+
+            <RaisedButton 
+            label="Enrolled Courses"
+            primary={true}
+            styles = {styles.button}
+            onClick={this.enrollCourse}
+            />
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             
+            <img src={stu} />
+             <br/>
 
           </React.Fragment>
         </MuiThemeProvider>

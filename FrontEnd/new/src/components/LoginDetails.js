@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import axios from 'axios';
-import "bootstrap/dist/css/bootstrap.min.css";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const Students = props => (
@@ -11,10 +11,17 @@ const Students = props => (
         <td>{props.assign.name}</td>
         <td>{props.assign.email}</td>
         <td>{props.assign.userType}</td>
+        <td>
+            <Link to={"/edit/"+props.assign._id}>Edit</Link>
+            
+        </td>
+        <td>
+            <Link to={"/delete/"+props.assign._id}>Delete</Link>
+        </td>
     </tr>
 )
 
-export default class viewStudent extends Component {
+export default class LoginDetails extends Component {
 
     constructor(props){
         super(props);
@@ -22,7 +29,7 @@ export default class viewStudent extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/api/Student')
+        axios.get('http://localhost:4000/api/users')
             .then(response => {
                 this.setState({Courses: response.data});
             }).catch(function (error) {
@@ -41,9 +48,9 @@ export default class viewStudent extends Component {
         return(
             <MuiThemeProvider>  
                 <React.Fragment>
-                <AppBar title ="Student Details"/>
+                <AppBar title ="Login Details"/>
                 <br/>
-
+                <br/>
             <div>
                 <table className="table table-striped" style={{marginTop: 20}}>
                    <thead>
@@ -58,7 +65,6 @@ export default class viewStudent extends Component {
                     </tbody>
                 </table>
             </div>
-
             </React.Fragment>
         </MuiThemeProvider>
         )
